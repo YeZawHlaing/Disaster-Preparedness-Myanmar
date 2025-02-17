@@ -1,0 +1,41 @@
+services:
+
+  app:
+    build: .
+    container_name: backend
+    restart: always
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/disasterpreparedness?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: milo
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+    volumes:
+      - ./images:/app/images
+
+
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: milo
+      MYSQL_DATABASE: disasterpreparedness
+      MYSQL_USER: yezawhlaing
+      MYSQL_PASSWORD: root
+    ports:
+      - "3308:3306"  # Corrected port mapping (3307 on host, 3306 inside container)
+    networks:
+      - mynetwork
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+networks:
+  mynetwork:
+
+volumes:
+  mysql_data:

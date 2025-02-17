@@ -5,7 +5,6 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "supply_shop")
 public class SupplyShop {
@@ -20,23 +19,36 @@ public class SupplyShop {
     @Column(name = "contact_no")
     private String contactNo;
 
-    @Lob
-    @Column(columnDefinition = "LONGBLOB", name = "shop_img")
-    private byte[] imageData;
+//    @Lob
+//    @Column(name = "shop_image", columnDefinition = "LONGBLOB")
+//    private byte[] shopImage;
 
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-//    private Address address;
+    @Column(name = "shop_image")
+    private String shopImage;
 
-    //getter setter
 
     public long getShopId() {
         return shopId;
     }
+//
+//    public byte[] getShopImage() {
+//        return shopImage;
+//    }
+//
+//    public void setShopImage(byte[] shopImage) {
+//        this.shopImage = shopImage;
+//    }
 
     public void setShopId(long shopId) {
         this.shopId = shopId;
+    }
+
+    public String getShopImage() {
+        return shopImage;
+    }
+
+    public void setShopImage(String shopImage) {
+        this.shopImage = shopImage;
     }
 
     public String getShopName() {
@@ -54,20 +66,4 @@ public class SupplyShop {
     public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
     }
-
-    public byte[] getImageData() {
-        return imageData;
-    }
-
-    public void setImageData(byte[] imageData) {
-        this.imageData = imageData;
-    }
-
-//    public Address getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(Address address) {
-//        this.address = address;
-//    }
 }
