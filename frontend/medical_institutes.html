@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Indicator</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 70%;
+            height: 100%;
+        }
+        #location-list {
+            width: 30%;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f4f4f4;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .location-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .location-item:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="location-list">
+    <h2>Predefined Locations</h2>
+    <div id="locations"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    let map = L.map('map').setView([21.9162, 95.9560], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const locations = [
+        { lat: 16.8661, lon: 96.1951, name: "Yangon" },
+        { lat: 21.975, lon: 96.0836, name: "Mandalay" },
+        { lat: 19.7665, lon: 96.0978, name: "Naypyidaw" },
+        { lat: 20.45, lon: 97.65, name: "Taunggyi" }
+    ];
+
+    let locList = document.getElementById("locations");
+    locations.forEach(location => {
+        let marker = L.marker([location.lat, location.lon]).addTo(map)
+            .bindPopup(location.name);
+
+        let item = document.createElement("div");
+        item.className = "location-item";
+        item.textContent = location.name;
+        item.addEventListener("click", () => {
+            map.setView([location.lat, location.lon], 10);
+            marker.openPopup();
+        });
+        locList.appendChild(item);
+    });
+</script>
+</body>
+</html>

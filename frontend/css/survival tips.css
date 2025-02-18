@@ -1,0 +1,35 @@
+:root{
+    --primary-color: #6BAED6;
+}
+body{
+    background: #f0f0f0;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/*Start Navbar */
+.navbar{
+    background: var(--primary-color);
+    padding: 20px 20px;
+}
+
+.nav-link.actives{
+    color: #000;
+}
+
+.navbar-nav .nav-item .nav-link {
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    transform: scale(1.1); /* Slightly enlarges the item */
+}
+
+/*End Navbar*/
+
+/*Start Survivaltips Section*/
+.survivaltips .card-body{
+    background: var(--primary-color);
+}
+/*End Survivaltips Section*/
