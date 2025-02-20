@@ -9,8 +9,6 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "coordinate")
 public class Coordinate {
@@ -28,4 +26,36 @@ public class Coordinate {
     @OneToOne(mappedBy = "coordinate", cascade = CascadeType.ALL)
     private Address address;
 
+
+    public long getCoordinate_id() {
+        return coordinate_id;
+    }
+
+    public void setCoordinate_id(long coordinate_id) {
+        this.coordinate_id = coordinate_id;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
