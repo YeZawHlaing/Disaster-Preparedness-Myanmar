@@ -1,0 +1,44 @@
+[
+  {
+    "shopId": 1,
+    "shopName": "GoodHub Store",
+    "contactNo": "0944455799",
+    "shopImage": "/uploads/1739715432215_s2.jpg"
+  },
+  {
+    "shopId": 2,
+    "shopName": "ABC store",
+    "contactNo": "098989889",
+    "shopImage": "/uploads/1739718754371_Picture1.png"
+  },
+  {
+    "shopId": 3,
+    "shopName": "coco store",
+    "contactNo": "09980390488",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1739719631035_s3.webp"
+  },
+  {
+    "shopId": 4,
+    "shopName": "GG store",
+    "contactNo": "0966784455",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1739720443437_s1.jpg"
+  },
+  {
+    "shopId": 5,
+    "shopName": "YanKu store",
+    "contactNo": "0979782444",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1739720910842_photo_2025-02-05_18-26-33.jpg"
+  },
+  {
+    "shopId": 6,
+    "shopName": "PPP store",
+    "contactNo": "0999888454",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1739896652284_error%20apg.png"
+  },
+  {
+    "shopId": 7,
+    "shopName": "ZMT shop",
+    "contactNo": "09777777777",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1739970517727_photo_2025-02-12_22-56-01.jpg"
+  }
+]

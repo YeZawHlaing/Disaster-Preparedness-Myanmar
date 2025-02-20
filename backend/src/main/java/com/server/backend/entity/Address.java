@@ -27,8 +27,8 @@ public class Address {
     @Column(name = "state")
     private String state;
 
-//    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
-//    private SupplyShop supply_shop;
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+    private SupplyShop supply_shop;
 
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -26,6 +26,13 @@ public class SupplyShop {
     @Column(name = "shop_image")
     private String shopImage;
 
+    @OneToOne(cascade = CascadeType.ALL) // Automatically saves the Address
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    private Address address;
+
+
+
+
 
     public long getShopId() {
         return shopId;
