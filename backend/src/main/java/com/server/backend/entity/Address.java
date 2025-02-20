@@ -8,8 +8,6 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "address")
 public class Address {
@@ -35,4 +33,52 @@ public class Address {
     @JoinColumn(name = "coordinate_id", referencedColumnName = "coordinate_id")
     private Coordinate coordinate;
 
+
+    public long getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(long address_id) {
+        this.address_id = address_id;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public SupplyShop getSupply_shop() {
+        return supply_shop;
+    }
+
+    public void setSupply_shop(SupplyShop supply_shop) {
+        this.supply_shop = supply_shop;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
 }
