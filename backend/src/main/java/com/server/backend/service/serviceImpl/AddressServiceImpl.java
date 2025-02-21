@@ -40,7 +40,9 @@ public class AddressServiceImpl implements AddressService {
     public Address updateAddress(Address address, long id) {
         Address is_exist=addressRepo.findById(id).orElseThrow(() -> new RuntimeException("Not Found"));
         is_exist.setAddress_id(address.getAddress_id());
-
+        is_exist.setCity(address.getCity());
+        is_exist.setState(address.getState());
+        is_exist.setStreet(address.getStreet());
         addressRepo.save(is_exist);
 
         return is_exist;
