@@ -1,6 +1,7 @@
 package com.server.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,17 +15,23 @@ public class TrainingType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long volunteer_id;
+    private long traningType_id;
 
     @Column(name = "trainingtype")
     private String trainingType;
 
-    public long getVolunteer_id() {
-        return volunteer_id;
+    @ManyToOne
+    @JoinColumn(name = "training_plan_id", nullable = false)
+    @JsonBackReference
+    private TrainingPlan trainingPlan;
+
+
+    public long getTraningType_id() {
+        return traningType_id;
     }
 
-    public void setVolunteer_id(long volunteer_id) {
-        this.volunteer_id = volunteer_id;
+    public void setTraningType_id(long traningType_id) {
+        this.traningType_id = traningType_id;
     }
 
     public String getTrainingType() {
@@ -33,5 +40,14 @@ public class TrainingType {
 
     public void setTrainingType(String trainingType) {
         this.trainingType = trainingType;
+    }
+
+
+    public TrainingPlan getTrainingPlan() {
+        return trainingPlan;
+    }
+
+    public void setTrainingPlan(TrainingPlan trainingPlan) {
+        this.trainingPlan = trainingPlan;
     }
 }

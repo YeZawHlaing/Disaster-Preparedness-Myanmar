@@ -1,9 +1,13 @@
 package com.server.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +18,7 @@ public class TrainingPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long volunteerRole_id;
+    private long trainingPlan_id;
 
     @Column(name = "train_title")
     private String trainingTitle;
@@ -31,12 +35,29 @@ public class TrainingPlan {
     @Column(name = "deadLine")
     private String deadLine;
 
-    public long getVolunteerRole_id() {
-        return volunteerRole_id;
+    @ManyToOne
+    @JoinColumn(name = "organization_id", nullable = false)
+    @JsonBackReference
+    private Organization organization;
+
+    @OneToMany(mappedBy = "trainingPlan", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<TrainingType> trainingTypes;
+
+    public long getTrainingPlan_id() {
+        return trainingPlan_id;
     }
 
-    public void setVolunteerRole_id(long volunteerRole_id) {
-        this.volunteerRole_id = volunteerRole_id;
+    public void setTrainingPlan_id(long trainingPlan_id) {
+        this.trainingPlan_id = trainingPlan_id;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     public String getTrainingTitle() {
@@ -77,5 +98,13 @@ public class TrainingPlan {
 
     public void setDeadLine(String deadLine) {
         this.deadLine = deadLine;
+    }
+
+    public List<TrainingType> getTrainingTypes() {
+        return trainingTypes;
+    }
+
+    public void setTrainingTypes(List<TrainingType> trainingTypes) {
+        this.trainingTypes = trainingTypes;
     }
 }

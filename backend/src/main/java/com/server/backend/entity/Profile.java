@@ -1,6 +1,7 @@
 package com.server.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long org_id;
+    private long profile_id;
 
     @Column(name = "profile_image")
     private String profileImage;
@@ -28,12 +29,22 @@ public class Profile {
     @Column(name = "gender")
     private String gender;
 
-    public long getOrg_id() {
-        return org_id;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    // Automatically saves the Address
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    private Address address;
+
+    public long getProfile_id() {
+        return profile_id;
     }
 
-    public void setOrg_id(long org_id) {
-        this.org_id = org_id;
+    public void setProfile_id(long profile_id) {
+        this.profile_id = profile_id;
     }
 
     public String getProfileImage() {
@@ -66,5 +77,21 @@ public class Profile {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
