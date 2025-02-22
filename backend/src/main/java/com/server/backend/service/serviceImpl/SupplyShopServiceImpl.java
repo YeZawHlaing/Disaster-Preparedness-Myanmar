@@ -1,9 +1,15 @@
 package com.server.backend.service.serviceImpl;
 
 
+import com.server.backend.entity.Address;
+import com.server.backend.entity.Coordinate;
 import com.server.backend.entity.SupplyShop;
+import com.server.backend.repository.AddressRepo;
+import com.server.backend.repository.CoordinateRepo;
 import com.server.backend.repository.SupplyShopRepo;
+import com.server.backend.service.GeocodingService;
 import com.server.backend.service.SupplyShopService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +39,15 @@ private static final String UPLOAD_DIR = "/app/images/";
 
         @Autowired
         private SupplyShopRepo supplyShopRepo;
+
+        @Autowired
+        private AddressRepo addressRepo;
+
+        @Autowired
+        private CoordinateRepo coordinateRepo;
+
+    @Autowired
+    private GeocodingService geocodingService;
 
         //image start
 
@@ -64,6 +79,30 @@ private static final String UPLOAD_DIR = "/app/images/";
 //    }
 
     public SupplyShop CreateShop(SupplyShop supplyShop, MultipartFile file) {
+        Address address = supplyShop.getAddress();
+
+        // 🔥 Ensure Address is not null before processing
+        if (address == null) {
+            throw new RuntimeException("Address cannot be null");
+        }
+
+        // 🔹 Get Coordinates
+        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(
+                address.getStreet() + ", " + (address.getCity() != null ? address.getCity() : "")
+                        + ", " + (address.getState() != null ? address.getState() : "")
+        );
+
+        if (coordinates != null) {
+            // 🔥 Save Coordinates explicitly
+            Coordinate savedCoordinates = coordinateRepo.save(coordinates);
+            address.setCoordinate(savedCoordinates);
+        }
+
+        // 🔥 Save Address explicitly
+        Address savedAddress = addressRepo.save(address);
+        supplyShop.setAddress(savedAddress);
+
+        // 🔥 Process Image Upload
         if (!file.isEmpty()) {
             try {
                 String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
@@ -80,16 +119,16 @@ private static final String UPLOAD_DIR = "/app/images/";
                         .path(fileName)
                         .toUriString();
 
-                supplyShop.setShopImage(imageUrl); // Save full URL instead of just "/uploads/"
+                supplyShop.setShopImage(imageUrl);
 
             } catch (IOException e) {
                 throw new RuntimeException("Failed to store image", e);
             }
         }
 
+        // 🔥 Save and return the supply shop
         return supplyShopRepo.save(supplyShop);
     }
-
 
 
     //image end
@@ -144,6 +183,7 @@ private static final String UPLOAD_DIR = "/app/images/";
 
 
         @Override
+        @Transactional
         public List<SupplyShop> getAllShop() {
             return supplyShopRepo.findAll();
         }

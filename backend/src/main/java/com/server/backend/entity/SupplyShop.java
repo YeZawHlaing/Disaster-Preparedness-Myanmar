@@ -1,5 +1,6 @@
 package com.server.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +27,9 @@ public class SupplyShop {
     @Column(name = "shop_image")
     private String shopImage;
 
-    @OneToOne(cascade = CascadeType.ALL) // Automatically saves the Address
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    // Automatically saves the Address
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
@@ -37,14 +40,7 @@ public class SupplyShop {
     public long getShopId() {
         return shopId;
     }
-//
-//    public byte[] getShopImage() {
-//        return shopImage;
-//    }
-//
-//    public void setShopImage(byte[] shopImage) {
-//        this.shopImage = shopImage;
-//    }
+
 
     public void setShopId(long shopId) {
         this.shopId = shopId;
@@ -72,5 +68,13 @@ public class SupplyShop {
 
     public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

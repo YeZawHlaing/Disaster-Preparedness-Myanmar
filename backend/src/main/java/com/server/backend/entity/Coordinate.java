@@ -1,14 +1,14 @@
 package com.server.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "coordinate")
 public class Coordinate {
@@ -23,8 +23,23 @@ public class Coordinate {
     @Column(name = "longitude")
     private double longitude;
 
-    @OneToOne(mappedBy = "coordinate", cascade = CascadeType.ALL)
+
+    @OneToOne(mappedBy = "coordinate")
+    @JsonBackReference
     private Address address;
+
+//    @OneToOne
+//    @JoinColumn(name = "address_id", referencedColumnName = "address_id") // ✅ FK Here
+//    private Address address;
+
+    public Coordinate(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Coordinate() {
+    }
+
 
 
     public long getCoordinate_id() {

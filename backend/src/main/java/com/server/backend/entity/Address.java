@@ -1,5 +1,6 @@
 package com.server.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,14 @@ public class Address {
     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
     private SupplyShop supply_shop;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinColumn(name = "coordinate_id", referencedColumnName = "coordinate_id")
     private Coordinate coordinate;
+
+//
+//    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Coordinate coordinate;
 
     public long getAddress_id() {
         return address_id;
