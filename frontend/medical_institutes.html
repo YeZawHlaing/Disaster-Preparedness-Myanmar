@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location Indicator</title>
+    <title>Medical Institutes</title>
+    <!--bootstrap css1 js1 -->
+    <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
+        :root{
+            --primary-color: #6BAED6;
+        }
+
         body {
             display: flex;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+
+            overflow: hidden;
         }
+        /*Start Navbar */
+        .navbar{
+            background: var(--primary-color);
+            padding: 20px 20px;
+        }
+
+        .nav-link.actives{
+            color: #000;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-item:hover .nav-link {
+            transform: scale(1.1); /* Slightly enlarges the item */
+        }
+
+        /*End Navbar*/
         #map {
             width: 70%;
             height: 100%;
@@ -39,14 +66,75 @@
     </style>
 </head>
 <body>
-<div id="map"></div>
-<div id="location-list">
-    <h2>Predefined Locations</h2>
-    <div id="locations"></div>
+<header>
+    <!--    Start Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand h1 fs-4 text-white" href="#" >Rescue Kit</a>
+
+            <button type="button" class="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end text-uppercase fw-bold" id="nav">
+                <ul class="navbar-nav fs-6" >
+                    <li class="nav-item"><a href="index.html" class="nav-link active" >Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#"  class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Update</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Weather Forecast</a></li>
+                            <li><a href="#" class="dropdown-item">News</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Preparedness</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="survival%20tips.html" class="dropdown-item">Survival Tips</a></li>
+                            <li><a href="#" class="dropdown-item">Training & Certification</a></li>
+                            <li><a href="supplies_shops.html" class="dropdown-item">Supplies Shops</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">History</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Rescue teams</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Organization</a></li>
+                            <li><a href="#" class="dropdown-item">Volunteer</a></li>
+                            <li><a href="#" class="dropdown-item">Donation</a></li>
+                            <li><a href="#" class="dropdown-item">SOS</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About Us</a>
+                    </li>
+
+                </ul>
+
+                <a href="#" class="mx-2">
+                    <img src="./assets/img/profile.png" alt="profile" class="rounded-circle" width="55px" height="55px">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--    End Navbar -->
+</header>
+
+<div class="" id="map"></div>
+<div class="mt-5 py-5" id="location-list">
+    <h2 class="p-3">Locations</h2>
+    <div class="overflow-auto" id="locations"></div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+<!--bootstrap css1 js1-->
+<script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 <script>
     let map = L.map('map').setView([21.9162, 95.9560], 6);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -54,6 +142,14 @@
     }).addTo(map);
 
     const locations = [
+        { lat: 16.8661, lon: 96.1951, name: "Yangon" },
+        { lat: 21.975, lon: 96.0836, name: "Mandalay" },
+        { lat: 19.7665, lon: 96.0978, name: "Naypyidaw" },
+        { lat: 20.45, lon: 97.65, name: "Taunggyi" },
+        { lat: 16.8661, lon: 96.1951, name: "Yangon" },
+        { lat: 21.975, lon: 96.0836, name: "Mandalay" },
+        { lat: 19.7665, lon: 96.0978, name: "Naypyidaw" },
+        { lat: 20.45, lon: 97.65, name: "Taunggyi" },
         { lat: 16.8661, lon: 96.1951, name: "Yangon" },
         { lat: 21.975, lon: 96.0836, name: "Mandalay" },
         { lat: 19.7665, lon: 96.0978, name: "Naypyidaw" },

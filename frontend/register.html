@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!--bootstrap css1 js1 -->
+    <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--fontawsome css1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+    body{
+        background: #6BAED6;
+    }
+
+    .form-container{
+        border: 1px solid #6BAED6;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px #000;
+    }
+
+    i:hover{
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .forms{
+        background: #fff;
+    }
+
+    .forms:nth-child(1){
+        border-right: 1px solid #000;
+    }
+
+</style>
+<body>
+<a href="index.html" class="text-white mx-3"><i class="fas fa-arrow-left fs-2"></i></a>
+    <div class="container mt-3 rounded ">
+        <h2 class="text-white">Please Login or Create an Account</h2>
+        <div class="row form-container mb-5">
+            <div class="col-6 p-3 forms">
+                <h3>Sign In With Your Account</h3>
+                <small>If you already have an existing Account, please login below.</small>
+
+                <form class="container mt-4 p-2">
+
+                    <div class="mb-3">
+                        <label for="email_signin" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email_signin" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_singin">Password:</label>
+                        <input type="password" class="form-control" id="password_singin" placeholder="">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                    <p>Forgot Password?<a href="#"> Click Here</a></p>
+
+                </form>
+
+                <h5 class="text-center">OR</h5>
+                <button class="btn btn-danger w-100">Sign Up with Google</button>
+
+
+
+            </div>
+            <div class="col-6 p-3 forms">
+                <h3>Create An Account</h3>
+                <small>The first step is to create your Account. Please complete the form below.</small>
+                <form class="container mt-4 p-2">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City:</label>
+                        <input type="text" class="form-control" id="city" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address:</label>
+                        <input type="text" class="form-control" id="address" placeholder="">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="">
+                        <small>Password must be 6-64 characters. Spaces are acceptable. For strength use a case combination of: Uppercase (A-Z), lowercase (a-z), numbers (0-9), special characters (! @ # $ % ^ & *).</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cpassword">Confirm Password:</label>
+                        <input type="password" class="form-control" id="cpassword" placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="">
+                    </div>
+
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<!--bootstrap css1 js1-->
+<script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

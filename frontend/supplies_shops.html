@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplies Shops</title>
+    <!--bootstrap css1 js1 -->
+    <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/supplies_shops.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+    #section img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .container{
+        cursor: pointer;
+    }
+
+    .container:hover {
+        transform: scale(1.02); /* Slightly enlarge on hover */
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2); /* Add a subtle glow effect */
+    }
+</style>
+<body>
+<header>
+    <!--    Start Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand h1 fs-4 text-white" href="#" >Rescue Kit</a>
+
+            <button type="button" class="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end text-uppercase fw-bold" id="nav">
+                <ul class="navbar-nav fs-6" >
+                    <li class="nav-item"><a href="index.html" class="nav-link text-white" >Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#"  class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Update</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Weather Forecast</a></li>
+                            <li><a href="#" class="dropdown-item">News</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Preparedness</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="survival%20tips.html" class="dropdown-item">Survival Tips</a></li>
+                            <li><a href="#" class="dropdown-item">Training & Certification</a></li>
+                            <li><a href="supplies_shops.html" class="dropdown-item">Supplies Shops</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">History</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Rescue teams</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Organization</a></li>
+                            <li><a href="#" class="dropdown-item">Volunteer</a></li>
+                            <li><a href="#" class="dropdown-item">Donation</a></li>
+                            <li><a href="#" class="dropdown-item">SOS</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About Us</a>
+                    </li>
+
+                </ul>
+
+                <a href="#" class="mx-2">
+                    <img src="./assets/img/profile.png" alt="profile" class="rounded-circle" width="55px" height="55px">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--    End Navbar -->
+</header>
+
+<section class="mt-5 py-5" id="section">
+
+    <div class="container mt-3 bg-dark rounded">
+        <div class="row">
+            <div class="col-3">
+                <img src="assets/img/banner.jpg" class="p-3">
+            </div>
+            <div class="col-9 p-5 text-white">
+                <h2>Shop Name</h2>
+                <h5>ContactNo</h5>
+                <address>Address</address>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    const sec = document.getElementById('section');
+    // console.log(sec);
+
+        // console.log(`Name: ${d.shopName}`);
+        const containerdiv = document.createElement('div');
+        containerdiv.classList.add('container');
+        containerdiv.classList.add('mt-3');
+        containerdiv.classList.add('bg-dark');
+        containerdiv.classList.add('rounded');
+        // console.log(containerdiv);
+
+        const rowdiv = document.createElement('div');
+        rowdiv.classList.add('row');
+        // console.log(rowdiv);
+
+        const coldiv1 = document.createElement('div');
+        coldiv1.classList.add('col-3');
+
+        const coldiv2 = document.createElement('div');
+        coldiv2.classList.add('col-9');
+        coldiv2.classList.add('p-5');
+        coldiv2.classList.add('text-white');
+
+        const img = document.createElement('img');
+        img.classList.add('p-3');
+        // img.src= `${d.shopImage}`;
+        img.src = "assets/img/banner.jpg";
+
+        const shopName = document.createElement('h2');
+        // shopName.textContent = `${d.shopName}`;
+        shopName.textContent = 'BUBU';
+
+        const contactNo = document.createElement('h5');
+        // contactNo.textContent = `${d.contactNo}`;
+        contactNo.textContent = '09259124912';
+
+        const address = document.createElement('address');
+
+        coldiv1.appendChild(img);
+        coldiv2.appendChild(shopName);
+        coldiv2.appendChild(contactNo);
+        coldiv2.appendChild(address);
+
+        rowdiv.appendChild(coldiv1);
+        rowdiv.appendChild(coldiv2);
+
+        containerdiv.appendChild(rowdiv);
+
+        sec.appendChild(containerdiv);
+
+        async function getData() {
+        const url = "http://localhost:8080/supply-shop/all";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            // console.log(data);
+            // console.log(typeof data);
+            // console.log(Array.isArray(data));
+
+            const sec = document.getElementById('section');
+            // console.log(sec);
+
+            data.forEach(d => {
+                // console.log(`Name: ${d.shopName}`);
+                const containerdiv = document.createElement('div');
+                containerdiv.classList.add('container');
+                containerdiv.classList.add('mt-3');
+                containerdiv.classList.add('bg-dark');
+                containerdiv.classList.add('rounded');
+                // console.log(containerdiv);
+
+                const rowdiv = document.createElement('div');
+                rowdiv.classList.add('row');
+                // console.log(rowdiv);
+
+                const coldiv1 = document.createElement('div');
+                coldiv1.classList.add('col-3');
+
+                const coldiv2 = document.createElement('div');
+                coldiv2.classList.add('col-9');
+                coldiv2.classList.add('p-5');
+                coldiv2.classList.add('text-white');
+
+                const img = document.createElement('img');
+                img.classList.add('p-3');
+                // img.src= `${d.shopImage}`;
+
+                const shopName = document.createElement('h2');
+                // shopName.textContent = `${d.shopName}`;
+                shopName.textContent = 'BUBU';
+                const contactNo = document.createElement('h5');
+                // contactNo.textContent = `${d.contactNo}`;
+                contactNo.textContent = '09259124912';
+
+                const address = document.createElement('address');
+
+                coldiv1.appendChild(img);
+                coldiv2.appendChild(shopName);
+                coldiv2.appendChild(contactNo);
+                coldiv2.appendChild(address);
+
+                rowdiv.appendChild(coldiv1);
+                rowdiv.appendChild(coldiv2);
+
+                containerdiv.appendChild(rowdiv);
+
+                sec.appendChild(containerdiv);
+
+                // console.log(coldiv1,coldiv2);
+            });
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    // getData();
+</script>
+</body>
+</html>
