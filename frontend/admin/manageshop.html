@@ -1,0 +1,50 @@
+<form id="myForm">
+    <input type="text" id="shopName" placeholder="Shop Name" required />
+    <input type="text" id="contactNo" placeholder="Contact No" required />
+    <input type="file" id="shopImage" placeholder="Enter Image Path" required />
+    <input type="text" id="addressStreet" placeholder="Street" required />
+    <button type="submit">Submit</button>
+</form>
+
+<button type="submit" id="btn">Send Data</button>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent page reload
+
+    // Get form values
+    const shopName = document.getElementById("shopName").value;
+    const contactNo = document.getElementById("contactNo").value;
+    const address = document.getElementById("addressStreet").value;
+    const shopImage = document.getElementById("shopImage").files[0]; // File input
+
+    if (!shopImage) {
+        console.error("No image file selected!");
+        return;
+    }
+
+    // Create FormData object
+    const formData = new FormData();
+    formData.append("shopName", shopName);
+    formData.append("contactNo", contactNo);
+    formData.append("address", address);
+    formData.append("file", shopImage); // File must be sent as "file"
+
+    try {
+        const response = await fetch("http://localhost:8080/supply-shop/upload", {
+            method: "POST",
+            body: formData, // No need to set headers for multipart/form-data
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log("✅ Success:", result);
+        } else {
+            console.error("❌ Error:", response.status);
+        }
+    } catch (error) {
+        console.error("⚠️ Request Failed:", error);
+    }
+});
+
+</script>
