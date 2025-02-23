@@ -32,10 +32,10 @@ public class User {
 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Profile profile;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Organization> organizations;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<Organization> organizations;
 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
@@ -80,13 +80,13 @@ public class User {
 //    public void setProfile(Profile profile) {
 //        this.profile = profile;
 //    }
-
-    public List<Organization> getOrganizations() {
-        return organizations;
-    }
-
-    public void setOrganizations(List<Organization> organizations) {
-        this.organizations = organizations;
+//
+//    public List<Organization> getOrganizations() {
+//        return organizations;
+//    }
+//
+//    public void setOrganizations(List<Organization> organizations) {
+//        this.organizations = organizations;
     }
 //
 //    public Volunteer getVolunteer() {
@@ -96,4 +96,4 @@ public class User {
 //    public void setVolunteer(Volunteer volunteer) {
 //        this.volunteer = volunteer;
 //    }
-}
+
