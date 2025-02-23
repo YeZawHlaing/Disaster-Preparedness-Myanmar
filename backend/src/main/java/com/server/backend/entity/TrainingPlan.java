@@ -35,14 +35,19 @@ public class TrainingPlan {
     @Column(name = "deadLine")
     private String deadLine;
 
+
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "org_id" , referencedColumnName = "org_id")
+    private Organization organization;
+
 //    @ManyToOne
 //    @JoinColumn(name = "organization_id", nullable = false)
 //    @JsonBackReference
 //    private Organization organization;
 
-    @OneToMany(mappedBy = "trainingPlan", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<TrainingType> trainingTypes;
+//    @OneToMany(mappedBy = "trainingPlan", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<TrainingType> trainingTypes;
 
     public long getTrainingPlan_id() {
         return trainingPlan_id;
@@ -100,11 +105,11 @@ public class TrainingPlan {
         this.deadLine = deadLine;
     }
 
-    public List<TrainingType> getTrainingTypes() {
-        return trainingTypes;
-    }
-
-    public void setTrainingTypes(List<TrainingType> trainingTypes) {
-        this.trainingTypes = trainingTypes;
-    }
+//    public List<TrainingType> getTrainingTypes() {
+//        return trainingTypes;
+//    }
+//
+//    public void setTrainingTypes(List<TrainingType> trainingTypes) {
+//        this.trainingTypes = trainingTypes;
+//    }
 }

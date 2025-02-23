@@ -44,14 +44,14 @@ public class Volunteer {
 //    @JoinColumn(name = "coordinate_id", referencedColumnName = "coordinate_id")
 //    private Coordinate coordinate;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
-    @JsonBackReference
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
+//    @JsonBackReference
+//    private User user;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<VolunteerRole> volunteerRoles;
+//    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<VolunteerRole> volunteerRoles;
 
 
     public long getVolunteer_id() {
@@ -110,19 +110,19 @@ public class Volunteer {
         this.purpose = purpose;
     }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<VolunteerRole> getVolunteerRoles() {
-        return volunteerRoles;
-    }
-
-    public void setVolunteerRoles(List<VolunteerRole> volunteerRoles) {
-        this.volunteerRoles = volunteerRoles;
-    }
+//    public List<VolunteerRole> getVolunteerRoles() {
+//        return volunteerRoles;
+//    }
+//
+//    public void setVolunteerRoles(List<VolunteerRole> volunteerRoles) {
+//        this.volunteerRoles = volunteerRoles;
+//    }
 }
