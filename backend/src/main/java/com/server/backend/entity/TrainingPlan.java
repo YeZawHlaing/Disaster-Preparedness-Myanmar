@@ -35,10 +35,10 @@ public class TrainingPlan {
     @Column(name = "deadLine")
     private String deadLine;
 
-    @ManyToOne
-    @JoinColumn(name = "organization_id", nullable = false)
-    @JsonBackReference
-    private Organization organization;
+//    @ManyToOne
+//    @JoinColumn(name = "organization_id", nullable = false)
+//    @JsonBackReference
+//    private Organization organization;
 
     @OneToMany(mappedBy = "trainingPlan", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
@@ -52,13 +52,13 @@ public class TrainingPlan {
         this.trainingPlan_id = trainingPlan_id;
     }
 
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
+//    public Organization getOrganization() {
+//        return organization;
+//    }
+//
+//    public void setOrganization(Organization organization) {
+//        this.organization = organization;
+//    }
 
     public String getTrainingTitle() {
         return trainingTitle;

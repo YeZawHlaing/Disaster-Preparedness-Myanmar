@@ -17,7 +17,7 @@ public class TrainingType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long traningType_id;
 
-    @Column(name = "trainingtype")
+    @Column(name = "training_type")
     private String trainingType;
 
     @ManyToOne

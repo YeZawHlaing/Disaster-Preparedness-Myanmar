@@ -1,44 +1,206 @@
 [
   {
-    "shopId": 1,
-    "shopName": "GoodHub Store",
-    "contactNo": "0944455799",
-    "shopImage": "/uploads/1739715432215_s2.jpg"
+    "shopName": "DeeDee Store",
+    "contactNo": "09787878778",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740169122827_s1.jpg",
+    "address": {
+      "address_id": 1,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": null
+    }
   },
   {
-    "shopId": 2,
-    "shopName": "ABC store",
-    "contactNo": "098989889",
-    "shopImage": "/uploads/1739718754371_Picture1.png"
+    "shopName": "GG Store",
+    "contactNo": "098989676",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740169584560_s2.jpg",
+    "address": {
+      "address_id": 2,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": null
+    }
   },
   {
-    "shopId": 3,
-    "shopName": "coco store",
-    "contactNo": "09980390488",
-    "shopImage": "http://localhost:8080/supply-shop/uploads/1739719631035_s3.webp"
+    "shopName": "ABC Store",
+    "contactNo": "09683776164",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740170129054_s3.webp",
+    "address": {
+      "address_id": 3,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": null
+    }
   },
   {
-    "shopId": 4,
+    "shopName": "Good Hub",
+    "contactNo": "09683776164",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740172433096_s3.webp",
+    "address": {
+      "address_id": 4,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": null
+    }
+  },
+  {
+    "shopName": "Coco store",
+    "contactNo": "09683776164",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740199200096_Picture1.png",
+    "address": {
+      "address_id": 5,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": null
+    }
+  },
+  {
     "shopName": "GG store",
-    "contactNo": "0966784455",
-    "shopImage": "http://localhost:8080/supply-shop/uploads/1739720443437_s1.jpg"
+    "contactNo": "09683776164",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740199715387_Picture1.png",
+    "address": {
+      "address_id": 6,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 6,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
   },
   {
-    "shopId": 5,
-    "shopName": "YanKu store",
-    "contactNo": "0979782444",
-    "shopImage": "http://localhost:8080/supply-shop/uploads/1739720910842_photo_2025-02-05_18-26-33.jpg"
+    "shopName": "coco store",
+    "contactNo": "0968377777",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740233379210_Picture1.png",
+    "address": {
+      "address_id": 7,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 8,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
   },
   {
-    "shopId": 6,
-    "shopName": "PPP store",
-    "contactNo": "0999888454",
-    "shopImage": "http://localhost:8080/supply-shop/uploads/1739896652284_error%20apg.png"
+    "shopName": "Goodhub store",
+    "contactNo": "0968377777",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740288921869_city-map-vector.webp",
+    "address": {
+      "address_id": 8,
+      "street": "Mandalay-Mogok Road, Mandalay",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 10,
+        "latitude": 22.931408486038,
+        "longitude": 96.282801210746
+      }
+    }
   },
   {
-    "shopId": 7,
-    "shopName": "ZMT shop",
-    "contactNo": "09777777777",
-    "shopImage": "http://localhost:8080/supply-shop/uploads/1739970517727_photo_2025-02-12_22-56-01.jpg"
+    "shopName": "acv",
+    "contactNo": "098888888",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740304242331_flutter%20project%20structure%20clean%20architecture.png",
+    "address": {
+      "address_id": 14,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 17,
+        "latitude": 16.7741192707029,
+        "longitude": 96.1655414953402
+      }
+    }
+  },
+  {
+    "shopName": "acv",
+    "contactNo": "098888888",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740305372502_flutter%20project%20structure%20clean%20architecture.png",
+    "address": {
+      "address_id": 15,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 19,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
+  },
+  {
+    "shopName": "bib",
+    "contactNo": "09877485475",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740318327110_photo_2025-01-20_22-38-15.jpg",
+    "address": {
+      "address_id": 16,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 21,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
+  },
+  {
+    "shopName": "bib",
+    "contactNo": "09877485475",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740318329088_photo_2025-01-20_22-38-15.jpg",
+    "address": {
+      "address_id": 17,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 23,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
+  },
+  {
+    "shopName": "gugu",
+    "contactNo": "0963859592",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740318678286_thingyan%20pic%20edit.jpg",
+    "address": {
+      "address_id": 18,
+      "street": "Maha Bandula Road, Yangon, Myanmar",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 25,
+        "latitude": 16.77376275,
+        "longitude": 96.1756706
+      }
+    }
+  },
+  {
+    "shopName": "goodhub",
+    "contactNo": "09877485475",
+    "shopImage": "http://localhost:8080/supply-shop/uploads/1740318831936_thingyan%20pic%20edit.jpg",
+    "address": {
+      "address_id": 19,
+      "street": "Mandalay-Mogok Road",
+      "city": null,
+      "state": null,
+      "coordinate": {
+        "coordinate_id": 27,
+        "latitude": 23.0986315525654,
+        "longitude": 96.6570524740346
+      }
+    }
   }
 ]
