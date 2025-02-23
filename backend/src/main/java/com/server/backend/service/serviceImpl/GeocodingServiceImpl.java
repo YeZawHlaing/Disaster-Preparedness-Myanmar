@@ -23,7 +23,7 @@ public class GeocodingServiceImpl implements GeocodingService {
             RestTemplate restTemplate = new RestTemplate();
 
             HttpHeaders headers = new HttpHeaders();
-            headers.set("User-Agent", "DisasterPreparednessApp (yezawhlaing0@email.com)"); // Change email
+            headers.set("User-Agent", "DisasterPreparednessApp (minthihaa408@email.com)"); // Change email
             HttpEntity<String> entity = new HttpEntity<>(headers);
 
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

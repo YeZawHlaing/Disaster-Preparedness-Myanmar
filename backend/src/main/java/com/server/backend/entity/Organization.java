@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,25 +48,28 @@ public class Organization {
     @Column(name = "social_url")
     private String socialUrl;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    // Automatically saves the Address
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
 
 
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<TrainingPlan> trainingPlans;
 
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    // Automatically saves the Address
+//    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+//    private Address address;
+//
+//
+//    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<TrainingPlan> trainingPlans;
+//
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
-
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<VolunteerRole> volunteerRoles;
+//
+//    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<VolunteerRole> volunteerRoles;
 
     public long getOrg_id() {
         return org_id;
@@ -131,22 +136,22 @@ public class Organization {
     }
 
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<TrainingPlan> getTrainingPlans() {
-        return trainingPlans;
-    }
-
-    public void setTrainingPlans(List<TrainingPlan> trainingPlans) {
-        this.trainingPlans = trainingPlans;
-    }
-
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
+//
+//    public List<TrainingPlan> getTrainingPlans() {
+//        return trainingPlans;
+//    }
+//
+//    public void setTrainingPlans(List<TrainingPlan> trainingPlans) {
+//        this.trainingPlans = trainingPlans;
+//    }
+//
     public User getUser() {
         return user;
     }
@@ -154,12 +159,12 @@ public class Organization {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public List<VolunteerRole> getVolunteerRoles() {
-        return volunteerRoles;
-    }
-
-    public void setVolunteerRoles(List<VolunteerRole> volunteerRoles) {
-        this.volunteerRoles = volunteerRoles;
-    }
+//
+//    public List<VolunteerRole> getVolunteerRoles() {
+//        return volunteerRoles;
+//    }
+//
+//    public void setVolunteerRoles(List<VolunteerRole> volunteerRoles) {
+//        this.volunteerRoles = volunteerRoles;
+//    }
 }
