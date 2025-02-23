@@ -6,6 +6,9 @@
     <!--bootstrap css1 js1 -->
     <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
+    <!--fontawsome css1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <style>
     *{
@@ -19,6 +22,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    a{
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .container{
@@ -39,16 +48,51 @@
         transform: translateX(-50%);
     }
 
+    #details{
+        margin-top: 30%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-item {
+        width: 70%;
+        padding: 15px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background 0.3s;
+
+
+    }
+    .detail-item:hover {
+        background: #e0e0e0;
+    }
+
+    i:hover{
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
 
 </style>
 <body>
+<a href="index.html" class="text-dark mx-3"><i class="fas fa-arrow-left fs-2"></i></a>
+
 <div class="container">
     <div class="img-container">
         <img src="assets/img/profile.png" width="160px" height="160px">
         <h3>UserName</h3>
     </div>
 
-
+    <div id="details">
+        <div class="detail-item">age</div>
+        <div class="detail-item">contactNo</div>
+        <div class="detail-item">gender</div>
+    </div>
 </div>
 
 
