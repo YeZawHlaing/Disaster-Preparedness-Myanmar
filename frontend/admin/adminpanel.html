@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
+    <!--bootstrap css1 js1 -->
+    <link href="../assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--fontawsome css1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .sidebar{
+            background: #6BAED6;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block text-white sidebar vh-100 p-3">
+            <h3 class="text-center">Admin Panel</h3>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="loadPage('shop.html')">Manage Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="loadPage('news.html')">Manage News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="loadPage('organization.html')">Manage Organization</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content with iframe -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <iframe id="contentFrame" src="shop.html"></iframe>
+        </main>
+    </div>
+</div>
+
+<!--bootstrap css1 js1-->
+<script src="../assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+<script>
+    function loadPage(page) {
+        document.getElementById("contentFrame").src = page;
+    }
+</script>
+
+</body>
+</html>

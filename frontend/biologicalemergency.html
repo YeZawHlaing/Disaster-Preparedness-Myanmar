@@ -2,68 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BiologicalEmergency</title>
-  <!--bootstrap css1 js1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biological Emergency</title>
+
+  <!-- Bootstrap CSS -->
   <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-  <!--fontawsome css1-->
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #6BAED6;
+    }
+
+    .header-image {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    h2 {
+      background: #6BAED6;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    i:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
 </head>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #6BAED6;
-  }
 
-  .header-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
+<body class="rounded-5">
+<a href="survival%20tips.html" class="text-white mx-3"><i class="fas fa-arrow-left fs-2"></i></a>
 
-  h2{
-    background: #6BAED6;
-  }
-</style>
-<body class=" rounded-5">
-<a href="survival%20tips.html" class="btn btn-primary mx-3"><i class="fas fa-arrow-left"></i> Go Back</a>
-
-<div class="container mt-4 p-5 bg-white">
-  <img src="./assets/img/survivaltips/biologicalemergency.jpg" alt="BiologicalEmergency" class="header-image rounded">
+<div class="container mt-4 p-5 bg-white rounded mb-5">
+  <img src="./assets/img/survivaltips/biologicalemergency.jpg" alt="Biological Emergency" class="header-image rounded img-fluid">
   <h1 class="text-center mt-3">Biological Emergency Survival Guide</h1>
 
-  <h2 class="container mt-4">Before</h2>
-  <ul>
-    <li>Watch	television,	listen	to	radio,	or	surf the Internet for official news of any outbreak.</li>
-    <li>Practice	good	hygiene	and	keep	your premises clean.</li>
-    <li>Use	mosquito	nets/repellents	at	night.	</li>
-    <li>Boil	water	before	drinking.	Chlorinate	it,	if possible.</li>
-    <li>Thoroughly	wash	all	vegetables/fruits before cooking/eating.</li>
-    <li>Use	insecticides	to	contain	the	vectors.</li>
-    <li>Don’t	consume	stale	or	contaminated	food products.</li>
-    <li>Immediately	report	any	sickness	with unusual and/or suspicious symptoms in the family / neighbourhood to health authorities.</li>
-    <li>Seek	medical	attention	if	you	are	sick; keep a stock of your regular prescribed medicines.</li>
-  </ul>
+  <!-- Before -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>Before</h2>
+      <ul>
+        <li>Watch television, listen to the radio, or surf the Internet for official news of any outbreak.</li>
+        <li>Practice good hygiene and keep your premises clean.</li>
+        <li>Use mosquito nets/repellents at night.</li>
+        <li>Boil water before drinking. Chlorinate it if possible.</li>
+        <li>Thoroughly wash all vegetables/fruits before cooking/eating.</li>
+        <li>Use insecticides to contain the vectors.</li>
+        <li>Don’t consume stale or contaminated food products.</li>
+        <li>Immediately report any sickness with unusual and/or suspicious symptoms in the family/neighborhood to health authorities.</li>
+        <li>Seek medical attention if you are sick; keep a stock of your regular prescribed medicines.</li>
+      </ul>
+    </div>
+  </div>
 
-  <h2 class="container mt-4">During</h2>
-  <ul>
-    <li>Keep	distance	from	and	avoid	direct contact with the affected person.</li>
-    <li>Avoid	going	to	crownded	areas.</li>
-    <li>Use	a	respiration	mask	for	protection.</li>
-  </ul>
+  <!-- During -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>During</h2>
+      <ul>
+        <li>Keep distance from and avoid direct contact with the affected person.</li>
+        <li>Avoid going to crowded areas.</li>
+        <li>Use a respiration mask for protection.</li>
+      </ul>
+    </div>
+  </div>
 
-  <h2 class="container mt-4">After</h2>
-  <ul>
-    <li>Follow	official	instructions	and	help authorities dispose of contaminated items such as food, poultry, crops, vectors and other materials, if advised.</li>
-    <li>Ensure	that	all	the	required	immunizations are done and necessary precautions taken.</li>
-  </ul>
-
-
+  <!-- After -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>After</h2>
+      <ul>
+        <li>Follow official instructions and help authorities dispose of contaminated items such as food, poultry, crops, vectors, and other materials, if advised.</li>
+        <li>Ensure that all the required immunizations are done and necessary precautions taken.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-
-<!--bootstrap css1 js1-->
+<!-- Bootstrap JS -->
 <script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 </body>
 </html>
