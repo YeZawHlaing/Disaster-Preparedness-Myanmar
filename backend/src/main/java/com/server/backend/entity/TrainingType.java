@@ -17,13 +17,13 @@ public class TrainingType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long traningType_id;
 
-    @Column(name = "trainingtype")
+    @Column(name = "training_type")
     private String trainingType;
 
-    @ManyToOne
-    @JoinColumn(name = "training_plan_id", nullable = false)
-    @JsonBackReference
-    private TrainingPlan trainingPlan;
+//    @ManyToOne
+//    @JoinColumn(name = "trainingPlan_id", nullable = false)
+//    @JsonBackReference
+//    private TrainingPlan trainingPlan;
 
 
     public long getTraningType_id() {
@@ -43,11 +43,13 @@ public class TrainingType {
     }
 
 
-    public TrainingPlan getTrainingPlan() {
-        return trainingPlan;
-    }
+//    public TrainingPlan getTrainingPlan() {
+//        return trainingPlan;
+//    }
+//
+//    public void setTrainingPlan(TrainingPlan trainingPlan) {
+//        this.trainingPlan = trainingPlan;
+//    }
 
-    public void setTrainingPlan(TrainingPlan trainingPlan) {
-        this.trainingPlan = trainingPlan;
-    }
+
 }

@@ -22,15 +22,15 @@ public class VolunteerRole {
     @Column(name = "request")
     private String roleTypeRequest;
 
-    @ManyToOne
-    @JoinColumn(name = "organization_id", referencedColumnName = "org_id")
-    @JsonBackReference
-    private Organization organization;
+//    @ManyToOne
+//    @JoinColumn(name = "organization_id", referencedColumnName = "org_id")
+//    @JsonBackReference
+//    private Organization organization;
 
-    @ManyToOne
-    @JoinColumn(name = "volunteer_id", referencedColumnName = "volunteer_id")
-    @JsonBackReference
-    private Volunteer volunteer;
+//    @ManyToOne
+//    @JoinColumn(name = "volunteer_id", referencedColumnName = "volunteer_id")
+//    @JsonBackReference
+//    private Volunteer volunteer;
 
     public long getVolunteerRole_id() {
         return volunteerRole_id;
@@ -57,19 +57,19 @@ public class VolunteerRole {
     }
 
 
-    public Organization getOrganization() {
-        return organization;
-    }
+//    public Organization getOrganization() {
+//        return organization;
+//    }
+//
+//    public void setOrganization(Organization organization) {
+//        this.organization = organization;
+//    }
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
-
-    public Volunteer getVolunteer() {
-        return volunteer;
-    }
-
-    public void setVolunteer(Volunteer volunteer) {
-        this.volunteer = volunteer;
-    }
+//    public Volunteer getVolunteer() {
+//        return volunteer;
+//    }
+//
+//    public void setVolunteer(Volunteer volunteer) {
+//        this.volunteer = volunteer;
+//    }
 }

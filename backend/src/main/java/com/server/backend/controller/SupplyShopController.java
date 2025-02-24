@@ -48,12 +48,64 @@ public class SupplyShopController {
     @Autowired
     AddressRepo addressRepo;
 
+//    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+//    public ResponseEntity<SupplyShop> uploadShopData(
+//            @RequestPart("shopName") String shopName,
+//            @RequestPart("contactNo") String contactNo,
+//            @RequestPart("address") String address,
+//            @RequestPart("file") MultipartFile file) {
+//
+//        // Convert address to coordinates
+//        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
+//
+//        if (coordinates == null) {
+//            System.out.println("⚠️ No coordinates found for address: " + address);
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//        }
+//
+//        System.out.println("📌 Latitude: " + coordinates.getLatitude() + ", Longitude: " + coordinates.getLongitude());
+//
+//
+//
+//
+//
+//        // 🔥 Explicitly Save Coordinate
+//        Coordinate savedCoordinate = coordinateRepo.save(coordinates);
+//        System.out.println("✅ Coordinate Saved with ID: " + savedCoordinate.getCoordinate_id());
+//
+//        Coordinate coordinateEt=new Coordinate();
+//        coordinateEt.setLongitude(savedCoordinate.getLongitude());
+//        coordinateEt.setLatitude(savedCoordinate.getLatitude());
+//
+//        // ✅ Create and Save Address
+//        Address addressEntity = new Address();
+//        addressEntity.setStreet(address);
+//        addressEntity.setCoordinate(savedCoordinate);
+//
+//        Address savedAddress = addressRepo.save(addressEntity);
+//
+//        Address addressCoo = addressRepo.findAddressWithCoordinate(savedAddress.getAddress_id());
+//
+//        System.out.println("✅ Address Saved with ID: " + savedAddress.getAddress_id());
+//
+//
+//        // ✅ Save the SupplyShop with the Address
+//        SupplyShop supplyShop = new SupplyShop();
+//        supplyShop.setShopName(shopName);
+//        supplyShop.setContactNo(contactNo);
+//        supplyShop.setAddress(savedAddress);
+//
+//
+//        SupplyShop createdShop = supplyShopService.CreateShop(supplyShop, file);
+//        return ResponseEntity.ok(createdShop);
+//    }
+
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
     public ResponseEntity<SupplyShop> uploadShopData(
-            @RequestPart("shopName") String shopName,
-            @RequestPart("contactNo") String contactNo,
-            @RequestPart("address") String address,
-            @RequestPart("file") MultipartFile file) {
+            @RequestParam("shopName") String shopName,
+            @RequestParam("contactNo") String contactNo,
+            @RequestParam("address") String address,
+            @RequestParam("file") MultipartFile file) {
 
         // Convert address to coordinates
         Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
@@ -64,7 +116,6 @@ public class SupplyShopController {
         }
 
         System.out.println("📌 Latitude: " + coordinates.getLatitude() + ", Longitude: " + coordinates.getLongitude());
-
 
 
 
@@ -103,78 +154,6 @@ public class SupplyShopController {
 
 
 
-//    @PostMapping(value = "/upload", consumes = "multipart/form-data")
-//    public ResponseEntity<?> uploadShopData(
-//            @RequestPart("shopName") String shopName,
-//            @RequestPart("contactNo") String contactNo,
-//            @RequestPart("address") String address,  // Change to @RequestPart for consistency
-//            @RequestPart("file") MultipartFile file) {
-//
-//        if (shopName.isEmpty() || contactNo.isEmpty() || address.isEmpty() || file.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//                    .body("❌ Missing required fields: shopName, contactNo, address, or file");
-//        }
-//
-//        // Convert address to coordinates
-//        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
-//        if (coordinates == null) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//                    .body("⚠️ Invalid address. Unable to fetch coordinates.");
-//        }
-//
-//        // Save address and coordinates
-//        Address addressEntity = new Address();
-//        addressEntity.setStreet(address);
-//        addressEntity.setCoordinate(coordinates);
-//
-//        SupplyShop supplyShop = new SupplyShop();
-//        supplyShop.setShopName(shopName);
-//        supplyShop.setContactNo(contactNo);
-//        supplyShop.setAddress(addressEntity);
-//
-//        // Process image and save shop data
-//        SupplyShop createdShop = supplyShopService.CreateShop(supplyShop, file);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createdShop);
-//    }
-
-//    @PostMapping(value = "/upload", consumes = "multipart/form-data")
-//    public ResponseEntity<SupplyShop> uploadShopData(
-//            @RequestPart("shopName") String shopName,
-//            @RequestPart("contactNo") String contactNo,
-//            @RequestParam("address") String address,
-//            @RequestPart("file") MultipartFile file) {
-//
-//        // Convert address to coordinates
-//        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
-//
-//        if (coordinates == null) {
-//            System.out.println("⚠️ No coordinates found for address: " + address);
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-//        }
-//
-//        // 🔥 Explicitly Save Coordinate
-//        Coordinate savedCoordinate = coordinateRepo.save(coordinates);
-//
-//        // Save coordinates in Address entity
-//        Address addressEntity = new Address();
-//        addressEntity.setStreet(address);
-//        addressEntity.setCoordinate(savedCoordinate); // ✅ Assign saved coordinate
-//
-//        // 🔥 Explicitly Save Address
-//        Address savedAddress = addressRepo.save(addressEntity);
-//
-//        // Save the SupplyShop
-//        SupplyShop supplyShop = new SupplyShop();
-//        supplyShop.setShopName(shopName);
-//        supplyShop.setContactNo(contactNo);
-//        supplyShop.setAddress(savedAddress); // ✅ Assign saved address
-//
-//        // Process image and save shop data
-//        SupplyShop createdShop = supplyShopService.CreateShop(supplyShop, file);
-//
-//        return ResponseEntity.ok(createdShop);
-//    }
-//
 @GetMapping("/all")
 public ResponseEntity<List<SupplyShopDto>> getAllShops() {
     List<SupplyShop> shops = supplyShopService.getAllShop();

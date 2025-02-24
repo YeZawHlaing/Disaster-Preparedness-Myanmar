@@ -30,16 +30,16 @@ public class User {
     private String password;
 
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Profile profile;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Profile profile;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<Organization> organizations;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Organization> organizations;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Volunteer volunteer;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private Volunteer volunteer;
 
     public int getId() {
         return id;
@@ -73,27 +73,27 @@ public class User {
         this.password = password;
     }
 
-    public Profile getProfile() {
-        return profile;
+//    public Profile getProfile() {
+//        return profile;
+//    }
+//
+//    public void setProfile(Profile profile) {
+//        this.profile = profile;
+//    }
+//
+//    public List<Organization> getOrganizations() {
+//        return organizations;
+//    }
+//
+//    public void setOrganizations(List<Organization> organizations) {
+//        this.organizations = organizations;
     }
+//
+//    public Volunteer getVolunteer() {
+//        return volunteer;
+//    }
+//
+//    public void setVolunteer(Volunteer volunteer) {
+//        this.volunteer = volunteer;
+//    }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public List<Organization> getOrganizations() {
-        return organizations;
-    }
-
-    public void setOrganizations(List<Organization> organizations) {
-        this.organizations = organizations;
-    }
-
-    public Volunteer getVolunteer() {
-        return volunteer;
-    }
-
-    public void setVolunteer(Volunteer volunteer) {
-        this.volunteer = volunteer;
-    }
-}
