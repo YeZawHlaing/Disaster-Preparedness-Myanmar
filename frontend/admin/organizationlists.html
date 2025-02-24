@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Shop Management</title>
+<!--bootstrap css1 js1 -->
+<link href="../assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<!--fontawsome css1-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+  #tb img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+</style>
+<body>
+<div class="container mt-4">
+  <h2>Organizations Lists</h2>
+<!--  <a href="addshop.html" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Supply Shops</a>-->
+  <table class="table table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>License No</th>
+      <th>Date</th>
+      <th>Manager Contact</th>
+      <th>SOS</th>
+      <th>Social URL</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody id="tb">
+
+    </tbody>
+  </table>
+</div>
+
+<script src="../assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  async function getData() {
+    const url = "http://localhost:8080/Organization/all";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      // console.log(data);
+      // console.log(typeof data);
+      // console.log(Array.isArray(data));
+
+      const tbody = document.getElementById('tb');
+      // console.log(tbody);
+
+      data.forEach(d => {
+        // console.log(d);
+        const tr = document.createElement('tr');
+
+        const name = document.createElement('td');
+        name.textContent = `${d.name}`;
+
+        const orgType = document.createElement('td');
+        orgType.textContent = `${d.orgType}`;
+
+        const licenseNo = document.createElement('td');
+        licenseNo.textContent = `${d.licenseNo}`;
+
+        const date = document.createElement('td');
+        date.textContent = `${d.date}`;
+
+        const mgContact = document.createElement('td');
+        mgContact.textContent = `${d.mgContact}`;
+
+        const sos = document.createElement('td');
+        sos.textContent = `${d.sos}`;
+
+        const socialUrl = document.createElement('td');
+        socialUrl.textContent = `${d.socialUrl}`;
+
+        const address = document.createElement('td');
+        address.textContent = `${d.address.street}`;
+
+        // const action = document.createElement('td');
+        //
+        // const editbtn = document.createElement('button');
+        // editbtn.classList.add('btn');
+        // editbtn.classList.add('btn-primary');
+        // editbtn.classList.add('btn-md');
+        // editbtn.classList.add('mx-3');
+        // editbtn.innerHTML = `<i class="fas fa-edit"></i> Edit`;
+        //
+        //
+        // const deletebtn = document.createElement('button');
+        // deletebtn.classList.add('btn');
+        // deletebtn.classList.add('btn-danger');
+        // deletebtn.classList.add('btn-md');
+        // deletebtn.classList.add('mx-3');
+        // deletebtn.innerHTML = `<i class="fas fa-trash"></i> Delete`;
+        //
+        // action.appendChild(editbtn);
+        // action.appendChild(deletebtn);
+
+        tr.appendChild(name);
+        tr.appendChild(orgType);
+        tr.appendChild(licenseNo);
+        tr.appendChild(date);
+        tr.appendChild(mgContact);
+        tr.appendChild(sos);
+        tr.appendChild(socialUrl);
+        tr.appendChild(address);
+
+
+        tbody.appendChild(tr);
+
+        // deletebtn.addEventListener('click',function (){
+        //   // console.log(`${d.shop_id}`);
+        //   deleteItem(`${d.shop_id}`);
+        // });
+
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  getData();
+
+</script>
+</body>
+</html>

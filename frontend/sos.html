@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Organization & SOS List</title>
+
+    <!--bootstrap css1 js1 -->
+    <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--fontawsome css1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="css/nav.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        .card-custom {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            padding: 20px;
+        }
+
+        .list-group-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            padding: 12px 20px;
+            border: none;
+        }
+
+        .icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        .sos-icon {
+            color: #dc3545;
+        }
+
+        .row-header {
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .row-item {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .row-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<!--    Start Navbar -->
+<nav class="navbar navbar-expand-md fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand h1 fs-4 text-white" href="#" >Rescue Kit</a>
+
+        <button type="button" class="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end text-uppercase fw-bold" id="nav">
+            <ul class="navbar-nav fs-6" >
+                <li class="nav-item"><a href="index.html" class="nav-link text-white" >Home</a></li>
+
+
+                <li class="nav-item"><a href="news.html" class="nav-link text-white">News</a></li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Preparedness</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="survival%20tips.html" class="dropdown-item">Survival Tips</a></li>
+                        <li><a href="trainingplan.html" class="dropdown-item">Training & Certification</a></li>
+                        <li><a href="supplies_shops.html" class="dropdown-item">Supplies Shops</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="history.html" class="nav-link text-white">History</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Rescue teams</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="organizations.html" class="dropdown-item">Organization</a></li>
+                        <li><a href="volunteers.html" class="dropdown-item">Volunteer</a></li>
+                        <li><a href="sos.html" class="dropdown-item">SOS</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="aboutus.html">About Us</a>
+                </li>
+
+            </ul>
+
+            <a href="profile.html" class="mx-2">
+                <img src="./assets/img/profile.png" alt="profile" class="rounded-circle" width="55px" height="55px">
+            </a>
+        </div>
+    </div>
+</nav>
+<!--    End Navbar -->
+
+<section class="mt-5 py-3">
+    <div class="container mt-5">
+        <div class="card card-custom" id="div">
+            <h3 class="text-center mb-4"> Organization & SOS List</h3>
+
+            <div class="row row-header text-center">
+                <div class="col-6">Organization Name</div>
+                <div class="col-6">SOS Contact</div>
+            </div>
+
+            <!--        <div class="row row-item text-center">-->
+            <!--            <div class="col-6"> Global Rescue Services</div>-->
+            <!--            <div class="col-6"> +44 300 987 6543</div>-->
+            <!--        </div>-->
+
+        </div>
+    </div>
+
+</section>
+
+<!--bootstrap css1 js1-->
+<script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    async function getData() {
+        const url = "http://localhost:8080/Organization/all";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            // console.log(data);
+            // console.log(typeof data);
+            // console.log(Array.isArray(data));
+
+            const div = document.getElementById('div');
+            console.log(div);
+
+            data.forEach(d => {
+                const row = document.createElement('div');
+                row.classList.add('row');
+                row.classList.add('row-item');
+                row.classList.add('text-center');
+
+                row.innerHTML = `
+            <div class="col-6"> ${d.name}</div>
+            <div class="col-6"> ${d.sos}</div>
+
+    `;
+
+                div.appendChild(row);
+
+
+            });
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    getData();
+
+</script>
+</body>
+</html>

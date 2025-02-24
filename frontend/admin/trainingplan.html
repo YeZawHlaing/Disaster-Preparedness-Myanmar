@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shop Management</title>
+    <title>Training Plan Management</title>
     <!--bootstrap css1 js1 -->
     <link href="../assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -20,15 +20,17 @@
 </style>
 <body>
 <div class="container mt-4">
-    <h2>Supply Shops Management</h2>
-    <a href="addshop.html" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Supply Shops</a>
+    <h2>Training Plan Management</h2>
+    <a href="addtrainingplan.html" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Training Plan</a>
     <table class="table table-bordered">
         <thead class="table-dark">
         <tr>
-            <th>shopID</th>
-            <th>shopImage</th>
-            <th>shopName</th>
-            <th>contactNo</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Deadline</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -41,53 +43,8 @@
 <script src="../assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-    // const tbody = document.getElementById('tb');
-    // // console.log(tbody);
-    //
-    // const tr = document.createElement('tr');
-    //
-    // const img = document.createElement('td');
-    // img.textContent = "kwon nara.jpg";
-    //
-    // const shopName = document.createElement('td');
-    // shopName.textContent = "G&G";
-    //
-    // const contactNo = document.createElement('td');
-    // contactNo.textContent = "09751170231";
-    //
-    // const address = document.createElement('td');
-    // address.textContent = "Yangon";
-    //
-    // const action = document.createElement('td');
-    //
-    // const editbtn = document.createElement('button');
-    // editbtn.textContent = "Edit";
-    // editbtn.classList.add('btn');
-    // editbtn.classList.add('btn-primary');
-    // editbtn.classList.add('btn-md');
-    // editbtn.classList.add('mx-3')
-    //
-    // const deletebtn = document.createElement('button');
-    // deletebtn.textContent = "Delete";
-    // deletebtn.classList.add('btn');
-    // deletebtn.classList.add('btn-danger');
-    // deletebtn.classList.add('btn-md');
-    // deletebtn.classList.add('mx-3');
-    //
-    // action.appendChild(editbtn);
-    // action.appendChild(deletebtn);
-    //
-    // tr.appendChild(img);
-    // tr.appendChild(shopName);
-    // tr.appendChild(contactNo);
-    // tr.appendChild(address);
-    // tr.appendChild(action);
-    //
-    // tbody.appendChild(tr);
-    //
-
     async function getData() {
-        const url = "http://localhost:8080/supply-shop/ids-all";
+        const url = "http://localhost:8080/TrainingPlan/all";
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -106,23 +63,30 @@
                 // console.log(d);
                 const tr = document.createElement('tr');
 
-                const shopId = document.createElement('td');
-                shopId.textContent = `${d.shop_id}`;
+                const Id = document.createElement('td');
+                Id.textContent = `${d.trainingPlan_id}`;
 
-                const shopimg = document.createElement('td');
+                const trainingTitle = document.createElement('td');
+                trainingTitle.textContent = `${d.trainingTitle}`;
+
+                const newimg = document.createElement('td');
                 const img = document.createElement('img');
-                img.src = `${d.shop_image}`;
+                img.src = `${d.trainingImage}`;
 
-                shopimg.appendChild(img);
+                newimg.appendChild(img);
 
-                const shopName = document.createElement('td');
-                shopName.textContent = `${d.shop_name}`;
-
-                const contactNo = document.createElement('td');
-                contactNo.textContent = `${d.contact_no}`;
+                const description = document.createElement('td');
+                description.textContent = `${d.description}`;
 
                 // const address = document.createElement('td');
                 // address.textContent = `${d.address.street}`;
+
+                const trainingDate = document.createElement('td');
+                trainingDate.textContent = `${d.trainingDate}`;
+
+                const deadline = document.createElement('td');
+                deadline.textContent = `${d.deadLine}`;
+
 
                 const action = document.createElement('td');
 
@@ -144,18 +108,18 @@
                 action.appendChild(editbtn);
                 action.appendChild(deletebtn);
 
-                tr.appendChild(shopId);
-                tr.appendChild(shopimg);
-                tr.appendChild(shopName);
-                tr.appendChild(contactNo);
-                // tr.appendChild(address);
+                tr.appendChild(Id);
+                tr.appendChild(trainingTitle);
+                tr.appendChild(newimg);
+                tr.appendChild(description);
+                tr.appendChild(trainingDate);
+                tr.appendChild(deadline);
                 tr.appendChild(action);
 
                 tbody.appendChild(tr);
 
                 deletebtn.addEventListener('click',function (){
-                    // console.log(`${d.shop_id}`);
-                    deleteItem(`${d.shop_id}`);
+                    deleteItem(`${d.trainingPlan_id}`);
                 });
             });
         } catch (error) {
@@ -167,7 +131,7 @@
 
     async function deleteItem(itemId) {
         try {
-            const response = await fetch(`http://localhost:8080/supply-shop/delete/${itemId}`, {
+            const response = await fetch(`http://localhost:8080/TrainingPlan/delete/${itemId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" }
 

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organizations</title>
+    <!--bootstrap css1 js1 -->
+    <link href="./assets/libs/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--fontawsome css1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="css/nav.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .info-card {
+        background: #6BAED6;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+
+        cursor: pointer;
+    }
+
+    .info-card:hover {
+        transform: scale(1.02);
+    }
+
+    .info-card i {
+        color: #fff;
+        margin-right: 8px;
+    }
+
+    .social-icons a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin: 0 10px;
+        color: #007bff;
+    }
+
+    .social-icons a:hover {
+        color: #0056b3;
+    }
+</style>
+
+<body>
+<!--    Start Navbar -->
+<nav class="navbar navbar-expand-md fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand h1 fs-4 text-white" href="#" >Rescue Kit</a>
+
+        <button type="button" class="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end text-uppercase fw-bold" id="nav">
+            <ul class="navbar-nav fs-6" >
+                <li class="nav-item"><a href="index.html" class="nav-link text-white" >Home</a></li>
+
+
+                <li class="nav-item"><a href="news.html" class="nav-link">News</a></li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Preparedness</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="survival%20tips.html" class="dropdown-item">Survival Tips</a></li>
+                        <li><a href="trainingplan.html" class="dropdown-item">Training & Certification</a></li>
+                        <li><a href="supplies_shops.html" class="dropdown-item">Supplies Shops</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="history.html" class="nav-link text-white">History</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Rescue teams</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="organizations.html" class="dropdown-item">Organization</a></li>
+                        <li><a href="volunteers.html" class="dropdown-item">Volunteer</a></li>
+                        <li><a href="sos.html" class="dropdown-item">SOS</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="aboutus.html">About Us</a>
+                </li>
+
+            </ul>
+
+            <a href="profile.html" class="mx-2">
+                <img src="./assets/img/profile.png" alt="profile" class="rounded-circle" width="55px" height="55px">
+            </a>
+        </div>
+    </div>
+</nav>
+<!--    End Navbar -->
+
+<section class="mt-5 py-5">
+    <h3 class="text-center mb-4 mt-3">Organization Details</h3>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center" id="div">
+
+<!--            <div class="col-md-8 mt-3">-->
+<!--                <div class="card p-4 info-card">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <p><i class="fas fa-building"></i> <strong>Name:</strong> Rescue Kit Co.</p>-->
+<!--                            <p><i class="fas fa-tags"></i> <strong>Type:</strong> Disaster Relief Organization</p>-->
+<!--                            <p><i class="fas fa-id-badge"></i> <strong>License:</strong> #RK-2024-1123</p>-->
+<!--                            <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> February 24, 2025</p>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <p><i class="fas fa-user-tie"></i> <strong>Manager Contact:</strong> +123 456 7890</p>-->
+<!--                            <p><i class="fas fa-phone-alt"></i> <strong>SOS:</strong> 911 / +987 654 3210</p>-->
+<!--                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 123 Disaster Street, NY, USA</p>-->
+<!--                            <p class="social-icons">-->
+<!--                                <i class="fas fa-link"></i> <strong>Social:</strong>-->
+<!--                                <a href="#"><i class="fab fa-facebook"></i></a>-->
+<!--                                <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--                                <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+        </div>
+    </div>
+
+</section>
+
+
+<script src="./assets/libs/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    // const col = document.createElement('div');
+    // col.classList.add('col-md-8');
+    // col.classList.add('mt-3');
+    // col.innerHTML = `
+    //                 <div class="card p-4 info-card">
+    //                 <div class="row">
+    //                     <div class="col-md-6">
+    //                         <p><i class="fas fa-building"></i> <strong>Name:</strong> Rescue Kit Co.</p>
+    //                         <p><i class="fas fa-tags"></i> <strong>Type:</strong> Disaster Relief Organization</p>
+    //                         <p><i class="fas fa-id-badge"></i> <strong>License:</strong> #RK-2024-1123</p>
+    //                         <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> February 24, 2025</p>
+    //                     </div>
+    //                     <div class="col-md-6">
+    //                         <p><i class="fas fa-user-tie"></i> <strong>Manager Contact:</strong> +123 456 7890</p>
+    //                         <p><i class="fas fa-phone-alt"></i> <strong>SOS:</strong> 911 / +987 654 3210</p>
+    //                         <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 123 Disaster Street, NY, USA</p>
+    //                         <p class="social-icons">
+    //                             <i class="fas fa-link"></i> <strong>Social:</strong>
+    //                             <a href="#"><i class="fab fa-facebook"></i></a>
+    //                             <a href="#"><i class="fab fa-twitter"></i></a>
+    //                             <a href="#"><i class="fab fa-instagram"></i></a>
+    //                         </p>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    // `;
+    // console.log(col);
+
+    async function getData() {
+        const url = "http://localhost:8080/Organization/all";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            // console.log(data);
+            // console.log(typeof data);
+            // console.log(Array.isArray(data));
+
+            const div = document.getElementById('div');
+            console.log(div);
+
+            data.forEach(d => {
+                const col = document.createElement('div');
+                col.classList.add('col-md-8');
+                col.classList.add('mt-3');
+                col.innerHTML = `
+                    <div class="card p-4 info-card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><i class="fas fa-building"></i> <strong>Name:</strong> ${d.name}</p>
+                            <p><i class="fas fa-tags"></i> <strong>Type:</strong> ${d.orgType}</p>
+                            <p><i class="fas fa-id-badge"></i> <strong>License:</strong> ${d.licenseNo}</p>
+                            <p><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> ${d.date}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><i class="fas fa-user-tie"></i> <strong>Manager Contact:</strong> ${d.mgContact}</p>
+                            <p><i class="fas fa-phone-alt"></i> <strong>SOS:</strong> ${d.sos}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> ${d.address.street}</p>
+                            <p class="social-icons">
+                                <i class="fas fa-link"></i> <strong>Social:</strong> ${d.socialUrl}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    `;
+                div.appendChild(col);
+
+                col.addEventListener('click',function (){
+                    console.log('Hello');
+                    // const url = `shop.html?shopName=${d.shopName}&latitude=${d.address.coordinate.latitude}&longitude=${d.address.coordinate.longitude}`;
+                    // window.location.href = url;
+                });
+
+
+            });
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    getData();
+
+
+
+
+
+</script>
+</body>
+</html>
