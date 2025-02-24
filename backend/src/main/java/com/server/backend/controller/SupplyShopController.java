@@ -26,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -90,6 +91,7 @@ public class SupplyShopController {
 
         // ✅ Save the SupplyShop with the Address
         SupplyShop supplyShop = new SupplyShop();
+
         supplyShop.setShopName(shopName);
         supplyShop.setContactNo(contactNo);
         supplyShop.setAddress(savedAddress);
@@ -210,6 +212,14 @@ public ResponseEntity<List<SupplyShopDto>> getAllShops() {
     }
 
 
+    @GetMapping("/ids-names")
+    public List<Map<String, Object>> getShopIdsAndNames() {
+        return supplyShopService.getAllShopIdsAndNames();
+    }
+    @GetMapping("/ids-all")
+    public List<Map<String, Object>> getShopInfo() {
+        return supplyShopService.getAllShopInfo();
+    }
 
 
     @PutMapping("/update/{id}")

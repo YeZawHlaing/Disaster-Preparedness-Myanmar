@@ -22,10 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -130,6 +127,40 @@ private static final String UPLOAD_DIR = "/app/images/";
         return supplyShopRepo.save(supplyShop);
     }
 
+
+
+    @Override
+    public List<Map<String, Object>> getAllShopIdsAndNames() {
+        List<Object[]> results = supplyShopRepo.findAllShopIdsAndNames();
+        List<Map<String, Object>> shopList = new ArrayList<>();
+
+        for (Object[] row : results) {
+            Map<String, Object> shopMap = new HashMap<>();
+            shopMap.put("shop_id", row[0]);
+            shopMap.put("shop_name", row[1]);
+            shopList.add(shopMap);
+        }
+
+        return shopList;
+    }
+
+    @Override
+    public List<Map<String, Object>> getAllShopInfo() {
+        List<Object[]> results = supplyShopRepo.findAllshopInfo();
+        List<Map<String, Object>> shopList = new ArrayList<>();
+
+        for (Object[] row : results) {
+            Map<String, Object> shopMap = new HashMap<>();
+            shopMap.put("shop_id", row[0]);
+            shopMap.put("contact_no", row[1]);
+            shopMap.put("shop_image", row[2]);
+            shopMap.put("shop_name", row[3]);
+            shopMap.put("address_id", row[4]);
+            shopList.add(shopMap);
+        }
+
+        return shopList;
+    }
 
     //image end
 
