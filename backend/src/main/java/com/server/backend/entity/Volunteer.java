@@ -28,7 +28,7 @@ public class Volunteer {
     private String institute;
 
     @Column(name = "contact_no")
-    private long contactNo;
+    private String contactNo;
 
     @Column(name = "gender")
     private String gender;
@@ -86,11 +86,11 @@ public class Volunteer {
         this.institute = institute;
     }
 
-    public long getContactNo() {
+    public String getContactNo() {
         return contactNo;
     }
 
-    public void setContactNo(long contactNo) {
+    public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
     }
 

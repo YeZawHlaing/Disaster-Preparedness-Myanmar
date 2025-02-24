@@ -21,8 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,6 +48,29 @@ public class OrganizationServiceImp implements OrganizationService {
         this.geocodingService = geocodingService;
     }
 
+
+    @Override
+    public List<Map<String, Object>> getAllOrgInfo() {
+        List<Object[]> results = orgRepo.findAllOrgInfo();
+        List<Map<String, Object>> orgList = new ArrayList<>();
+
+        for (Object[] row : results) {
+            Map<String, Object> orgMap = new HashMap<>();
+            orgMap.put("org_id", row[0]);
+            orgMap.put("name", row[1]);
+            orgMap.put("org_Type", row[2]);
+            orgMap.put("licenseNo", row[3]);
+            orgMap.put("date", row[4]);
+            orgMap.put("mgContact", row[5]);
+            orgMap.put("sos", row[6]);
+            orgMap.put("socialUrl", row[7]);
+            orgMap.put("address_id", row[8]);
+
+            orgList.add(orgMap);
+        }
+
+        return orgList;
+    }
 
     @Override
     public Organization createOrg(Organization organize) {

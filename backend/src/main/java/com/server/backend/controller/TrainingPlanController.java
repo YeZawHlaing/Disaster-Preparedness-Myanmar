@@ -33,9 +33,6 @@ public class TrainingPlanController {
             @RequestPart("description") String description,
             @RequestPart("trainingDate") String trainingDate,
             @RequestPart("deadLine") String deadLine ,
-
-
-
             @RequestPart("file") MultipartFile file) {
 
         TrainingPlan tplan = new TrainingPlan();

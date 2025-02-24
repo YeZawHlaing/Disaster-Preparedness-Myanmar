@@ -7,6 +7,7 @@ import com.server.backend.entity.SupplyShop;
 
 public class OrganizationDto {
 
+    private long org_id;
     private String name;
 
     private String orgType;
@@ -26,6 +27,7 @@ public class OrganizationDto {
 
 
     public OrganizationDto(Organization organization) {
+        this.org_id =organization.getOrg_id();
         this.name = organization.getName();
         this.orgType = organization.getOrgType();
         this.mgContact = organization.getMgContact();
@@ -98,5 +100,9 @@ public class OrganizationDto {
 
     public void setAddress(AddressDto address) {
         this.address = address;
+    }
+
+    public long getOrg_id() {
+        return org_id;
     }
 }

@@ -1,11 +1,8 @@
 package com.server.backend.controller;
 
 
-import com.server.backend.entity.Address;
-import com.server.backend.entity.TrainingType;
+import com.server.backend.entity.*;
 
-import com.server.backend.entity.User;
-import com.server.backend.entity.Volunteer;
 import com.server.backend.repository.UserRepo;
 import com.server.backend.service.VolunteerService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -43,15 +41,40 @@ public class VolunteerController {
 //
 //    }
 
-    @PostMapping("/upload")
-    public ResponseEntity<Volunteer> createBook(@RequestBody Volunteer volunteer) {
-        Volunteer savedVolunteer = volunteerService.createVolunteer(volunteer);
-        return new ResponseEntity<>(savedVolunteer, HttpStatus.CREATED);
+//    @PostMapping("/upload")
+//    public ResponseEntity<Volunteer> createBook(@RequestBody Volunteer volunteer) {
+//        Volunteer savedVolunteer = volunteerService.createVolunteer(volunteer);
+//        return new ResponseEntity<>(savedVolunteer, HttpStatus.CREATED);
+//    }
+
+    @PostMapping(value = "/upload",consumes = "multipart/form-data")
+    public ResponseEntity<Volunteer> uploadNewData(
+            @RequestPart("name") String name,
+            @RequestPart("email") String email,
+            @RequestPart("institute") String institute,
+            @RequestPart("contactNo") String contactNo,
+            @RequestPart("gender") String gender,
+            @RequestPart("purpose") String purpose
+            ) {
+
+        Volunteer vol = new Volunteer();
+        vol.setName(name);
+        vol.setEmail(email);
+        vol.setInstitute(institute);
+        vol.setContactNo(contactNo);
+        vol.setGender(gender);
+        vol.setPurpose(purpose);
+
+        // Process image and save shop data
+        Volunteer createNews = volunteerService.createVolunteer(vol);
+
+        return ResponseEntity.ok(createNews);
     }
 
 
 
-//    @PostMapping("/upload")
+
+    //    @PostMapping("/upload")
 //    public ResponseEntity<Volunteer> createVolunteer(@RequestBody Volunteer volunteer) {
 //        Volunteer savedVolunteer = volunteerService.createVolunteer(volunteer);
 //        return new ResponseEntity<>(savedVolunteer, HttpStatus.CREATED);

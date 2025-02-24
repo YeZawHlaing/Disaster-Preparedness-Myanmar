@@ -8,7 +8,13 @@ import com.server.backend.repository.VolunteerRepo;
 import com.server.backend.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 @Service
 public class VolunteerServiceImp implements VolunteerService {
@@ -45,6 +51,30 @@ public class VolunteerServiceImp implements VolunteerService {
 
 
         // Save volunteer
+        //return volunteerRepo.save(volunteer);
+//        if (!file.isEmpty()) {
+//            try {
+//                String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+//                Path filePath = Paths.get(UPLOAD_DIR + fileName);
+//                Files.createDirectories(filePath.getParent());
+//                Files.createDirectories(Paths.get(UPLOAD_DIR));
+//
+//                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+//
+//                // Generate full URL dynamically
+//                String imageUrl = ServletUriComponentsBuilder
+//                        .fromCurrentContextPath()
+//                        .path("/New/uploads/")
+//                        .path(fileName)
+//                        .toUriString();
+//
+//                news.setNewImage(imageUrl); // Save full URL instead of just "/uploads/"
+//
+//            } catch (IOException e) {
+//                throw new RuntimeException("Failed to store image", e);
+//            }
+//        }
+
         return volunteerRepo.save(volunteer);
     }
 
