@@ -34,9 +34,12 @@ public class Address {
     @JoinColumn(name = "coordinate_id", referencedColumnName = "coordinate_id")
     private Coordinate coordinate;
 
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+    private Profile profile;
 //
 //    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private Coordinate coordinate;
+
 
     public long getAddress_id() {
         return address_id;
@@ -84,5 +87,13 @@ public class Address {
 
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

@@ -29,15 +29,18 @@ public class Profile {
     @Column(name = "gender")
     private String gender;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
-    private User user;
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    @JoinColumn(name = "id", referencedColumnName = "id")
+//    private User user;
+
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     // Automatically saves the Address
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
+
 
     public long getProfile_id() {
         return profile_id;
@@ -78,14 +81,14 @@ public class Profile {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Address getAddress() {
         return address;

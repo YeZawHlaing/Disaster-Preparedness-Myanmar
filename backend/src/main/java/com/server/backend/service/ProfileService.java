@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProfileService {
 
-    Profile createProfile(Profile org, MultipartFile file);
+    Profile createProfile(Profile prof, MultipartFile file);
     List<Profile> getAllProfile();
     Profile deleteProfile(long id);
     Profile updateProf(Profile profile , long id);

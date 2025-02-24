@@ -20,26 +20,24 @@ public class User {
     @Column(nullable = false)
     private int id;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name", nullable = false)
     private String username;
 
-    @Column(name = "email",unique = true,nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password",unique = true,nullable = false)
+    @Column(name = "password", unique = true, nullable = false)
     private String password;
 
-
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "user" , cascade = CascadeType.ALL)
+    private Volunteer volunteer;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Profile profile;
 //
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
 //    private List<Organization> organizations;
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference
-//    private Volunteer volunteer;
 
     public int getId() {
         return id;
@@ -73,6 +71,14 @@ public class User {
         this.password = password;
     }
 
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
+
 //    public Profile getProfile() {
 //        return profile;
 //    }
@@ -80,20 +86,5 @@ public class User {
 //    public void setProfile(Profile profile) {
 //        this.profile = profile;
 //    }
-//
-//    public List<Organization> getOrganizations() {
-//        return organizations;
-//    }
-//
-//    public void setOrganizations(List<Organization> organizations) {
-//        this.organizations = organizations;
-    }
-//
-//    public Volunteer getVolunteer() {
-//        return volunteer;
-//    }
-//
-//    public void setVolunteer(Volunteer volunteer) {
-//        this.volunteer = volunteer;
-//    }
+}
 
