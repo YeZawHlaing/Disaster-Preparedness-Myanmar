@@ -4,6 +4,8 @@ package com.server.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.server.backend.dto.OrganizationDto;
+import com.server.backend.dto.SupplyShopDto;
 import com.server.backend.entity.*;
 
 import com.server.backend.repository.AddressRepo;
@@ -94,10 +96,18 @@ public class OrganizationController {
 
 
 
-    @GetMapping("/getOrg")
-    public List<Organization> getAllOrg(){
-        return orgService.getAllOrg();
+    @GetMapping("/all")
+    public ResponseEntity<List<OrganizationDto>> getAllShops() {
+        List<Organization> organizations = orgService.getAllOrg();
+
+        // Convert list of SupplyShop entities to DTOs
+        List<OrganizationDto> orgDTOs = organizations.stream()
+                .map(OrganizationDto::new)
+                .toList(); // Java 16+ (Use `.collect(Collectors.toList())` for older versions)
+
+        return ResponseEntity.ok(orgDTOs);
     }
+
 
     @PutMapping("updateOrg")
     public ResponseEntity<Organization> updateOrg(@RequestParam (name ="id") long id, Organization org){
