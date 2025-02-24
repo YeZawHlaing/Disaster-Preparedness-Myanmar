@@ -36,23 +36,14 @@ public class Volunteer {
     @Column(name = "purpose")
     private String purpose;
 
-//    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
-//    private SupplyShop supply_shop;
-//
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "coordinate_id", referencedColumnName = "coordinate_id")
-//    private Coordinate coordinate;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
-//    @JsonBackReference
-//    private User user;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private User user;
 
-//    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference
-//    private List<VolunteerRole> volunteerRoles;
 
+//     private List<VolunteerRole> volunteerRoles;
 
     public long getVolunteer_id() {
         return volunteer_id;
@@ -110,19 +101,13 @@ public class Volunteer {
         this.purpose = purpose;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
 
-//    public List<VolunteerRole> getVolunteerRoles() {
-//        return volunteerRoles;
-//    }
-//
-//    public void setVolunteerRoles(List<VolunteerRole> volunteerRoles) {
-//        this.volunteerRoles = volunteerRoles;
-//    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

@@ -41,6 +41,7 @@ public class VolunteerController {
 //
 //    }
 
+<<<<<<< HEAD
 //    @PostMapping("/upload")
 //    public ResponseEntity<Volunteer> createBook(@RequestBody Volunteer volunteer) {
 //        Volunteer savedVolunteer = volunteerService.createVolunteer(volunteer);
@@ -69,6 +70,55 @@ public class VolunteerController {
         Volunteer createNews = volunteerService.createVolunteer(vol);
 
         return ResponseEntity.ok(createNews);
+=======
+    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+    public ResponseEntity<Volunteer> uploadOrgData(
+            @RequestParam("name") String name,
+            @RequestParam("email") String email,
+            @RequestParam("institute") String institute,
+            @RequestParam("contactNo") Long contactNo,
+            @RequestParam("gender") String gender,
+            @RequestParam("purpose") String purpose
+//            @RequestParam("address") String address,  // Address as string
+//            @RequestParam("socialUrl") String socialUrl
+    ) {
+        // 🔥 Convert String Address to Address Object
+//        Address addressEntity = new Address();
+//        addressEntity.setStreet(address);
+//
+//        // 🔹 Get Coordinates
+//        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
+//
+//        if (coordinates == null) {
+//            System.out.println("⚠️ No coordinates found for address: " + address);
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//        }
+//
+//        System.out.println("📌 Latitude: " + coordinates.getLatitude() + ", Longitude: " + coordinates.getLongitude());
+//
+////        // 🔥 Save Coordinate if not already saved
+////        if (coordinates.getCoordinate_id() == null) {
+////            coordinates = coordinateRepo.save(coordinates);
+////        }
+//        addressEntity.setCoordinate(coordinates);
+//        User user=new User();
+//        // ✅ Save user
+//      User saveduserName =userRepo.save(user.getUsername());
+
+        // ✅ Create and Save Organization
+       Volunteer volunteer = new Volunteer();
+        volunteer.setName(name);
+        volunteer.setEmail(email);
+        volunteer.setInstitute(institute);
+        volunteer.setContactNo(contactNo);
+        volunteer.setGender(gender);
+        volunteer.setPurpose(purpose);
+
+
+        // ✅ Save Organization
+        Volunteer createdVol = volunteerService.createVolunteer(volunteer);
+        return ResponseEntity.ok(createdVol);
+>>>>>>> d56d9d7667614475655182c77ca6122d55ca4249
     }
 
 

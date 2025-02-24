@@ -1,9 +1,10 @@
 package com.server.backend.controller;
 
 
-import com.server.backend.entity.New;
-import com.server.backend.entity.Organization;
-import com.server.backend.entity.Profile;
+import com.server.backend.entity.*;
+import com.server.backend.repository.AddressRepo;
+import com.server.backend.repository.CoordinateRepo;
+import com.server.backend.service.GeocodingService;
 import com.server.backend.service.NewService;
 import com.server.backend.service.OrganizationService;
 import com.server.backend.service.ProfileService;
@@ -30,30 +31,75 @@ public class ProfileController {
     @Autowired
     private ProfileService profService;
 
-    @PostMapping(value = "/upload",consumes = "multipart/form-data")
-    public ResponseEntity<Profile> uploadNewData(
-            @RequestPart("age") Long age,
-            @RequestPart("contactNo") String contactNo,
-            @RequestPart("gender") String gender,
+    @Autowired
+    private GeocodingService geocodingService;
+
+    @Autowired
+    CoordinateRepo coordinateRepo;
+
+    @Autowired
+    AddressRepo addressRepo;
+
+
+    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+    public ResponseEntity<Profile> uploadProfileData(
+            @RequestParam("age") Long age,
+            @RequestParam("contactNo") String contactNo,
+            @RequestParam("gender") String gender,
+            @RequestParam("address") String address,
+            @RequestParam("file") MultipartFile file) {
+
+        // Convert address to coordinates
+        Coordinate coordinates = geocodingService.getCoordinatesFromAddress(address);
+
+        if (coordinates == null) {
+            System.out.println("⚠️ No coordinates found for address: " + address);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        System.out.println("📌 Latitude: " + coordinates.getLatitude() + ", Longitude: " + coordinates.getLongitude());
 
 
 
-            @RequestPart("file") MultipartFile file) {
 
-        Profile prof = new Profile();
-        prof.setAge(age);
-        prof.setContactNo(contactNo);
-        prof.setGender(gender);
+        // 🔥 Explicitly Save Coordinate
+        Coordinate savedCoordinate = coordinateRepo.save(coordinates);
+        System.out.println("✅ Coordinate Saved with ID: " + savedCoordinate.getCoordinate_id());
+
+        Coordinate coordinateEt=new Coordinate();
+        coordinateEt.setLongitude(savedCoordinate.getLongitude());
+        coordinateEt.setLatitude(savedCoordinate.getLatitude());
+
+        // ✅ Create and Save Address
+        Address addressEntity = new Address();
+        addressEntity.setStreet(address);
+        addressEntity.setCoordinate(savedCoordinate);
+
+        Address savedAddress = addressRepo.save(addressEntity);
+
+        Address addressCoo = addressRepo.findAddressWithCoordinate(savedAddress.getAddress_id());
+
+        System.out.println("✅ Address Saved with ID: " + savedAddress.getAddress_id());
+
+
+        // ✅ Save the SupplyShop with the Address
+//        SupplyShop supplyShop = new SupplyShop();
+        Profile p=new Profile();
+
+//        supplyShop.setShopName(shopName);
+//        supplyShop.setContactNo(contactNo);
+//        supplyShop.setAddress(savedAddress);
+
+        p.setAge(age);
+        p.setContactNo(contactNo);
+        p.setGender(gender);
+        p.setAddress(savedAddress);
 
 
 
-        // Process image and save shop data
-        Profile createNews = profService.createProfile(prof , file);
-
-        return ResponseEntity.ok(createNews);
+        Profile createdp = profService.createProfile(p, file);
+        return ResponseEntity.ok(createdp);
     }
-
-
 
 
     @GetMapping("/all")
